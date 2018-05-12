@@ -8,4 +8,4 @@ square n
     | otherwise       = Nothing
 
 total :: Integer
-total = sum $ fromJust $ mapM square [1..64]
+total = 2 ^ 64 - 1
