@@ -9,11 +9,11 @@ isAcronymBoundary x y
     | otherwise                                    = False
 
 acronym :: String -> String -> String
-acronym acc (x:[])          = acc
+acronym acc (_:[])          = acc
 acronym acc (x:y:xys)
-    | acc == []             = acronym [toUpper x] ([y] ++ xys)
+    | acc == []             = acronym [toUpper x] (y:xys)
     | isAcronymBoundary x y = acronym (acc ++ [toUpper y]) xys
-    | otherwise             = acronym acc ([y] ++ xys)
+    | otherwise             = acronym acc (y:xys)
 
 abbreviate :: String -> String
 abbreviate = acronym []
