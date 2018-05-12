@@ -7,4 +7,4 @@ squareOfSums :: Integral a => a -> a
 squareOfSums n = (sum [1..n]) ^ 2
 
 sumOfSquares :: Integral a => a -> a
-sumOfSquares n = foldl (\acc x -> acc + x^2) 0 [1..n]
+sumOfSquares n = sum $ map (^2) [1..n]
