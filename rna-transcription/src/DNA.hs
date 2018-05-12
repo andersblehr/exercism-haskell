@@ -1,15 +1,12 @@
 module DNA (toRNA) where
 
-toRnaNucleotide :: Char -> Char
-toRnaNucleotide 'G' = 'C'
-toRnaNucleotide 'C' = 'G'
-toRnaNucleotide 'T' = 'A'
-toRnaNucleotide 'A' = 'U'
+toRnaNucleotide :: Char -> Maybe Char
+toRnaNucleotide 'G' = Just 'C'
+toRnaNucleotide 'C' = Just 'G'
+toRnaNucleotide 'T' = Just 'A'
+toRnaNucleotide 'A' = Just 'U'
+toRnaNucleotide _   = Nothing
 
 toRNA :: String -> Maybe String
-toRNA strand = 
-    if all (flip elem "GCTA") strand then
-        Just $ map toRnaNucleotide strand
-    else
-        Nothing
+toRNA = mapM toRnaNucleotide
 
