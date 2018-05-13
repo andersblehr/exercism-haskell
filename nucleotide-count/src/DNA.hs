@@ -4,10 +4,10 @@ import Data.Map (Map, fromList)
 
 nucleotideCounts :: String -> Either String (Map Char Int)
 nucleotideCounts xs
-    | validStrand xs = Right $ fromList [('A', countNucleotides xs 'A')
-                                        ,('C', countNucleotides xs 'C')
-                                        ,('G', countNucleotides xs 'G')
-                                        ,('T', countNucleotides xs 'T')]
+    | validStrand xs = Right $ fromList [('A', countNucleotides 'A' xs)
+                                        ,('C', countNucleotides 'C' xs)
+                                        ,('G', countNucleotides 'G' xs)
+                                        ,('T', countNucleotides 'T' xs)]
     | otherwise      = Left "Oops..."
-    where validStrand xs             = all (\x -> elem x "ACGT") xs
-          countNucleotides xs letter = length $ filter (\x -> x == letter) xs
+    where validStrand                = all (\x -> elem x "ACGT")
+          countNucleotides letter xs = length $ filter (\x -> x == letter) xs
