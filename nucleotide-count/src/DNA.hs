@@ -10,4 +10,4 @@ nucleotideCounts xs
                                         ,('T', countNucleotides 'T' xs)]
     | otherwise      = Left "Oops..."
     where validStrand                = all (\x -> elem x "ACGT")
-          countNucleotides letter xs = length $ filter (\x -> x == letter) xs
+          countNucleotides letter xs = length $ filter (== letter) xs
