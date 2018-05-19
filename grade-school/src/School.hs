@@ -7,10 +7,10 @@ type School = [(Int, [String])]
 
 add :: Int -> String -> School -> School
 add studentGrade student [] = [(studentGrade, [student])]
-add studentGrade student (record:records)
-    | studentGrade == grade = [(grade, insert student students)] ++ records
-    | studentGrade  < grade = [(studentGrade, [student])] ++ (record:records)
-    | otherwise             = [record] ++ add studentGrade student records
+add studentGrade student allRecords@(record:records)
+    | studentGrade == grade = ((grade, insert student students) : records)
+    | studentGrade  < grade = ((studentGrade, [student]) : allRecords)
+    | otherwise             = (record : add studentGrade student records)
     where grade    = fst record
           students = snd record
 
