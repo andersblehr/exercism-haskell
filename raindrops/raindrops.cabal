@@ -1,0 +1,36 @@
+-- This file has been generated from package.yaml by hpack version 0.20.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 94cc9a5fea7aca59f883d2cf25ff6a4233bd2f90971df3e36785a0a5b8154963
+
+name:           raindrops
+version:        1.1.0.4
+build-type:     Simple
+cabal-version:  >= 1.10
+
+library
+  hs-source-dirs:
+      src
+  build-depends:
+      base
+    , containers
+  exposed-modules:
+      Raindrops
+  other-modules:
+      Paths_raindrops
+  default-language: Haskell2010
+
+test-suite test
+  type: exitcode-stdio-1.0
+  main-is: Tests.hs
+  hs-source-dirs:
+      test
+  build-depends:
+      base
+    , containers
+    , hspec
+    , raindrops
+  other-modules:
+      Paths_raindrops
+  default-language: Haskell2010
