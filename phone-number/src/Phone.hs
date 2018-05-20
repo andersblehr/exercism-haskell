@@ -10,6 +10,6 @@ number cs
     | otherwise                                 = Nothing
     where
         containsLetters = foldl (\acc c -> acc || isLetter c) False cs
-        digits          = [c | c <- cs, isDigit c]
+        digits          = filter isDigit cs
         validDigits     = (not $ elem (head digits) ['0', '1']) &&
                           (not $ elem (digits !! 3) ['0', '1'])
