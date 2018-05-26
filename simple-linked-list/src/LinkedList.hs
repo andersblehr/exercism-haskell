@@ -10,26 +10,26 @@ module LinkedList
     , toList
     ) where
 
-import Data.Maybe (fromJust, fromMaybe, isNothing)
+import Data.Maybe (fromJust, isNothing)
 
 data LinkedList a = LinkedList { datum' :: Maybe a
                                , next'  :: Maybe (LinkedList a)
                                } deriving (Eq, Show)
 
 datum :: LinkedList a -> a
-datum list = fromJust $ datum' list
+datum = fromJust . datum'
 
 fromList :: [a] -> LinkedList a
 fromList = foldr new nil
 
 isNil :: LinkedList a -> Bool
-isNil list = isNothing $ datum' list
+isNil = isNothing . datum'
 
 new :: a -> LinkedList a -> LinkedList a
 new x list = LinkedList { datum'=Just x, next'=Just list }
 
 next :: LinkedList a -> LinkedList a
-next list = fromJust $ next' list
+next = fromJust . next'
 
 nil :: LinkedList a
 nil = LinkedList { datum'=Nothing, next'=Nothing }
