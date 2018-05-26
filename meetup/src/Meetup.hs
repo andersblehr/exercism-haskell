@@ -22,11 +22,11 @@ data Schedule = First
 
 meetupDay :: Schedule -> Weekday -> Integer -> Int -> Day
 meetupDay schedule weekday year month
-    | schedule == Last   = fromGregorian year month (last monthDays)
-    | schedule == Teenth = fromGregorian year month (head (filter (>12) monthDays))
+    | schedule == Last   = (fromGregorian year month . last) monthDays
+    | schedule == Teenth = (fromGregorian year month . head) $ filter (>12) monthDays
     | otherwise          = fromGregorian year month (monthDays !! fromEnum schedule)
     where monthDays =
             let (_, _, firstDay) = toWeekDate $ fromGregorian year month 1
                 lastDay          = gregorianMonthLength year month
                 dayDiff          = (fromEnum weekday + 1) - firstDay
-            in filter (\d -> d > 0 && d <= lastDay) $ map (+ dayDiff) [1, 8 .. 29]
+            in filter (`elem` [1 .. lastDay]) $ map (+ dayDiff) [1, 8 .. 29]
