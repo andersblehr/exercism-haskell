@@ -40,4 +40,4 @@ reverseLinkedList = fromList . reverse . toList
 
 toList :: LinkedList a -> [a]
 toList Nil  = []
-toList list = datum list : toList (next list)
+toList list = datum list : (toList . next) list
