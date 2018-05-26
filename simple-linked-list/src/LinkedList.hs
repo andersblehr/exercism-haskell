@@ -12,18 +12,19 @@ module LinkedList
 
 import Data.Maybe (fromJust, isNothing)
 
-data LinkedList a = LinkedList { datum' :: Maybe a
-                               , next'  :: Maybe (LinkedList a)
-                               } deriving (Eq, Show)
+data LinkedList a = Nil | LinkedList { datum' :: Maybe a
+                                     , next'  :: Maybe (LinkedList a)
+                                     } deriving (Eq, Show)
 
 datum :: LinkedList a -> a
 datum = fromJust . datum'
 
 fromList :: [a] -> LinkedList a
-fromList = foldr new nil
+fromList = foldr new Nil
 
 isNil :: LinkedList a -> Bool
-isNil = isNothing . datum'
+isNil Nil = True
+isNil _   = False
 
 new :: a -> LinkedList a -> LinkedList a
 new x list = LinkedList { datum'=Just x, next'=Just list }
@@ -32,12 +33,11 @@ next :: LinkedList a -> LinkedList a
 next = fromJust . next'
 
 nil :: LinkedList a
-nil = LinkedList { datum'=Nothing, next'=Nothing }
+nil = Nil
 
 reverseLinkedList :: LinkedList a -> LinkedList a
 reverseLinkedList = fromList . reverse . toList
 
 toList :: LinkedList a -> [a]
-toList list
-    | isNil list = []
-    | otherwise  =  datum list : toList (next list)
+toList Nil  = []
+toList list = datum list : toList (next list)
