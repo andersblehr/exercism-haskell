@@ -5,11 +5,11 @@ import Control.Applicative
 numerals :: Integer -> Maybe String
 numerals n
     | n >= 4000 = Nothing
-    | n >= 1000 =       (nums n ('M', '-', '-') ++) <$> numerals (n - 1000 * n')
-    | n >=  100 =       (nums n ('C', 'D', 'M') ++) <$> numerals (n -  100 * n')
-    | n >=   10 =       (nums n ('X', 'L', 'C') ++) <$> numerals (n -   10 * n')
-    | otherwise = Just $ nums n ('I', 'V', 'X')
-    where nums n (one, five, ten)
+    | n >= 1000 =       (nums ('M', '-', '-') ++) <$> numerals (n - 1000 * n')
+    | n >=  100 =       (nums ('C', 'D', 'M') ++) <$> numerals (n -  100 * n')
+    | n >=   10 =       (nums ('X', 'L', 'C') ++) <$> numerals (n -   10 * n')
+    | otherwise = Just $ nums ('I', 'V', 'X')
+    where nums (one, five, ten)
             | n' == 9   = [one, ten]
             | n' == 8   = [five, one, one, one]
             | n' == 7   = [five, one, one]
