@@ -1,6 +1,6 @@
 module Allergies (Allergen(..), allergies, isAllergicTo) where
 
-import Data.Bits
+import Data.Bits (testBit)
 
 data Allergen = Eggs
               | Peanuts
@@ -10,13 +10,11 @@ data Allergen = Eggs
               | Chocolate
               | Pollen
               | Cats
-              deriving (Eq, Enum, Bounded)
+              deriving (Eq, Enum)
 
 allergies :: Int -> [Allergen]
-allergies score = map fst $ filter (\(_, v) -> score .&. v > 0) allergens
-    where allergens = zip [first .. last] [1, 2, 4, 8, 16, 32, 64, 128]
-            where first = minBound :: Allergen
-                  last  = maxBound :: Allergen
+allergies score = map toEnum $ filter (testBit score) allergens
+    where allergens = fromEnum <$> enumFrom Eggs
 
 isAllergicTo :: Allergen -> Int -> Bool
 isAllergicTo allergen score = elem allergen $ allergies score
