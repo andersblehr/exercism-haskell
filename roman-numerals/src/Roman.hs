@@ -1,7 +1,5 @@
 module Roman (numerals) where
 
-import Control.Applicative
-
 numerals :: Integer -> Maybe String
 numerals n
     | n >= 4000 = Nothing
