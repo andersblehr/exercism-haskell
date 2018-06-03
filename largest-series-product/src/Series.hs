@@ -1,6 +1,6 @@
 module Series (Error(..), largestProduct) where
 
-import Data.Char (isDigit, digitToInt)
+import Data.Char (isDigit)
 
 data Error = InvalidSpan | InvalidDigit Char deriving (Show, Eq)
 
@@ -11,7 +11,7 @@ largestProduct size digits
     | size > nofDigits  = Left InvalidSpan
     | size == nofDigits = multiply digits
     | otherwise         = max <$> multiply (take size digits) <*> largestProduct size (tail digits)
-    where nofDigits = length digits
+    where nofDigits       = length digits
           multiply [d]    = toInt d
           multiply (d:ds) = (*) <$> toInt d <*> multiply ds
           toInt d         = if isDigit d
