@@ -22,4 +22,4 @@ fromHourMin hour min = Clock (rem (quot minutes 60) 24) (rem minutes 60)
                     in rem signedMins 1440 + if signedMins < 0 then 1440 else 0
           
 toString :: Clock -> String
-toString clock = printf "%02d" (getHour clock) ++ ":" ++ printf "%02d" (getMin clock)
+toString clock = printf "%02d:%02d" (getHour clock) (getMin clock)
