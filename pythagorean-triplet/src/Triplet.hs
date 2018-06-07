@@ -13,5 +13,5 @@ pythagoreanTriplets :: Int -> Int -> [(Int, Int, Int)]
 pythagoreanTriplets min max = [(a, b, c) | a <- [min..max]
                                          , b <- [min..max]
                                          , c <- [min..max]
-                                         , b >= a
-                                         , a^2 + b^2 == c^2]
+                                         , a <= b
+                                         , isPythagorean (a, b, c)]
