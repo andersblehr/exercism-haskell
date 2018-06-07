@@ -14,5 +14,4 @@ pythagoreanTriplets min max = [(a, b, c) | a <- [min..max]
                                          , b <- [min..max]
                                          , c <- [min..max]
                                          , b >= a
-                                         , c >= c
                                          , a^2 + b^2 == c^2]
