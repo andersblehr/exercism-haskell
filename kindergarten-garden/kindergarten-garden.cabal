@@ -1,29 +1,32 @@
--- This file has been generated from package.yaml by hpack version 0.20.0.
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.1.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 873045025f29d6cf1fff63d47c24ec27b08299ebda87cf7f6e76c0fa62959f03
+-- hash: d20f48f3acf242b76ac8707237b2c9ae313613019e50d2583fb054bd1592d28a
 
 name:           kindergarten-garden
 version:        1.1.1.7
 build-type:     Simple
-cabal-version:  >= 1.10
 
 library
+  exposed-modules:
+      Garden
+  other-modules:
+      Paths_kindergarten_garden
   hs-source-dirs:
       src
   build-depends:
       base
     , containers
-  exposed-modules:
-      Garden
-  other-modules:
-      Paths_kindergarten_garden
   default-language: Haskell2010
 
 test-suite test
   type: exitcode-stdio-1.0
   main-is: Tests.hs
+  other-modules:
+      Paths_kindergarten_garden
   hs-source-dirs:
       test
   build-depends:
@@ -31,6 +34,4 @@ test-suite test
     , containers
     , hspec
     , kindergarten-garden
-  other-modules:
-      Paths_kindergarten_garden
   default-language: Haskell2010

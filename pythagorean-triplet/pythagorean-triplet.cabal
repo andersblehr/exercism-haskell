@@ -1,34 +1,35 @@
--- This file has been generated from package.yaml by hpack version 0.20.0.
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.1.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 0f01f02e006eb7be2d5c3e70c6fde1666506a23d2337ebf338e17af0d7cc7da0
+-- hash: 80795e7ee497e6d18fea49032bf305c9ae73c2f0b46cdb44a84eaf731a053e86
 
 name:           pythagorean-triplet
 version:        0.1.0.2
 build-type:     Simple
-cabal-version:  >= 1.10
 
 library
-  hs-source-dirs:
-      src
-  build-depends:
-      base
   exposed-modules:
       Triplet
   other-modules:
       Paths_pythagorean_triplet
+  hs-source-dirs:
+      src
+  build-depends:
+      base
   default-language: Haskell2010
 
 test-suite test
   type: exitcode-stdio-1.0
   main-is: Tests.hs
+  other-modules:
+      Paths_pythagorean_triplet
   hs-source-dirs:
       test
   build-depends:
       base
     , hspec
     , pythagorean-triplet
-  other-modules:
-      Paths_pythagorean_triplet
   default-language: Haskell2010

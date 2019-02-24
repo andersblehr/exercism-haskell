@@ -1,34 +1,35 @@
--- This file has been generated from package.yaml by hpack version 0.20.0.
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.1.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: a7568674383d6dece0ae768ab1b732bbaf0f5cc0062c94ad6dc6323155297017
+-- hash: 15bb81fa245efc33b3d5d5a3f29179d0b5d2ce6fd3cd20f20004c25ecc6c90d9
 
 name:           rna-transcription
 version:        1.2.0.7
 build-type:     Simple
-cabal-version:  >= 1.10
 
 library
-  hs-source-dirs:
-      src
-  build-depends:
-      base
   exposed-modules:
       DNA
   other-modules:
       Paths_rna_transcription
+  hs-source-dirs:
+      src
+  build-depends:
+      base
   default-language: Haskell2010
 
 test-suite test
   type: exitcode-stdio-1.0
   main-is: Tests.hs
+  other-modules:
+      Paths_rna_transcription
   hs-source-dirs:
       test
   build-depends:
       base
     , hspec
     , rna-transcription
-  other-modules:
-      Paths_rna_transcription
   default-language: Haskell2010
